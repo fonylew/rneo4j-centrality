@@ -10,4 +10,6 @@ order by weight desc
 "
 data = cypher(neo4j, query)
 g = graph.data.frame(data, directed = F)
-sort(betweenness(g), decreasing = T)[1:10]
+bet = betweenness(g)
+sort(bet,decreasing=T)[1:10]
+#sort(betweenness(g), decreasing = T)[1:10]
