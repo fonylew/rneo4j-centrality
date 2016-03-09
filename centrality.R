@@ -11,16 +11,28 @@ order by weight desc
 data = cypher(neo4j, query)
 g = graph.data.frame(data, directed = F)
 bet = betweenness(g)
-sort(bet,decreasing=T)[1:10]
+summary(bet)
+maxbet = max(bet)
 for(i in 1:length(bet))
 {
     unode = getLabeledNodes(neo4j, "User", id = as.integer(names(bet[i]))) 
-    updateProp(unode[[1]],betweenness_centrality = as.numeric(bet[[i]]))
+    updateProp(unode[[1]],betweenness_centrality = as.numeric(bet[[i]]),betweenness = as.numeric(bet[[i]])/maxbet)
 }
 
 close = closeness(g)
+summary(close)
+maxclose = max(close)
 for(i in 1:length(close))
 {
     unode = getLabeledNodes(neo4j, "User", id = as.integer(names(close[i]))) 
-    updateProp(unode[[1]],closeness_centrality = as.numeric(close[[i]]))
+    updateProp(unode[[1]],closeness_centrality = as.numeric(close[[i]]),closeness = as.numeric(close[[i]])/maxclose)
+}
+
+deg = degree(g)
+summary(deg)
+maxdegree(deg)
+for(i in 1:length(deg))
+{
+    unode = getLabeledNodes(neo4j, "User", id = as.integer(names(deg[i])))
+    updateProp(unode[[1]],degree = as.numeric(deg[[i]]))
 }
