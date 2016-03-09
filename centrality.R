@@ -13,3 +13,9 @@ g = graph.data.frame(data, directed = F)
 bet = betweenness(g)
 sort(bet,decreasing=T)[1:10]
 #sort(betweenness(g), decreasing = T)[1:10]
+
+for(i in 1:length(bet))
+{
+    unode = getLabeledNodes(neo4j, "User", id = as.integer(names(bet[i]))) 
+    updateProp(unode[[1]],betweenness_centrality = as.numeric(bet[[i]]))
+}
