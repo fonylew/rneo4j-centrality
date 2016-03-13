@@ -1,5 +1,6 @@
 library(RNeo4j)
 library(igraph)
+library(igraph)
 library(jsonlite)
 
 setwd('~/rneo4j-centrality')
