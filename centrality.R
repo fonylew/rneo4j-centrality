@@ -62,8 +62,8 @@ print('completed writing node User')
 Sys.time()
 
 queryt =  "
-MATCH (:Topic)<-[r]-(:User)
-RETURN COUNT(r) AS weight
+MATCH (t:Topic)<-[r]-(:User)
+RETURN t.id,COUNT(r) AS weight
 order by weight desc
 "
 datat = cypher(neo4j, queryt)
@@ -76,7 +76,7 @@ save(degt, file="degree_topic.Rdata")
 Sys.time()
 
 print('writing Topic in neo4j...')
-for(i in 1:length(deg))
+for(i in 1:length(degt))
 {
     unode = getLabeledNodes(neo4j, "Topic", id = as.integer(names(degt[i])))
     updateProp(unode[[1]],degree = as.numeric(degt[[i]]))
