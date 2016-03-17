@@ -20,7 +20,7 @@ gu = graph.data.frame(datau, directed = F)
 
 deg = degree(gu)
 summary(deg)
-maxdegree(deg)
+maxdegree=max(deg)
 for(i in 1:length(deg))
 {
     unode = getLabeledNodes(neo4j, "User", id = as.integer(names(deg[i])))
