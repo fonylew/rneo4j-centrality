@@ -21,9 +21,16 @@ gu = graph.data.frame(datau, directed = F)
 deg = degree(gu)
 summary(deg)
 maxdegree(deg)
+for(i in 1:length(deg))
+{
+    unode = getLabeledNodes(neo4j, "User", id = as.integer(names(deg[i])))
+    updateProp(unode[[1]],degree = as.numeric(deg[[i]]))
+}
 
 print('completed User degree')
 save(deg, file="degree_user.Rdata")
+sort_deg=sort(deg,decreasing=TRUE)  
+write.csv(sort_deg,"degree_user_sort.csv")  
 Sys.time()
 
 query =  "
@@ -39,6 +46,12 @@ bet = betweenness(g)
 summary(bet)
 maxbet = max(bet)
 
+for(i in 1:length(bet))
+{
+    unode = getLabeledNodes(neo4j, "User", id = as.integer(names(bet[i]))) 
+    updateProp(unode[[1]],betweenness_centrality = as.numeric(bet[[i]]),betweenness = as.numeric(bet[[i]])/maxbet)
+}
+
 print('completed betweenness')
 save(bet, file="betweenness_centrality.Rdata")
 Sys.time()
@@ -47,19 +60,25 @@ close = closeness(g)
 summary(close)
 maxclose = max(close)
 
+for(i in 1:length(close))
+{
+    unode = getLabeledNodes(neo4j, "User", id = as.integer(names(close[i]))) 
+    updateProp(unode[[1]],closeness_centrality = as.numeric(close[[i]]),closeness = as.numeric(close[[i]])/maxclose)
+}
+
 print('completed closeness')
 save(close, file="closeness_centrality.Rdata")
 Sys.time()
 
-print('writing User in neo4j...')
-for(i in 1:length(deg))
-{
-    unode = getLabeledNodes(neo4j, "User", id = as.integer(names(deg[i])))
-    updateProp(unode[[1]],degree = as.numeric(deg[[i]]),betweenness_centrality = as.numeric(bet[[i]]),betweenness = as.numeric(bet[[i]])/maxbet, closeness_centrality = as.numeric(close[[i]]),closeness = as.numeric(close[[i]])/maxclose)
-}
+# print('writing User in neo4j...')
+# for(i in 1:length(deg))
+# {
+#     unode = getLabeledNodes(neo4j, "User", id = as.integer(names(deg[i])))
+#     updateProp(unode[[1]],degree = as.numeric(deg[[i]]),betweenness_centrality = as.numeric(bet[[i]]),betweenness = as.numeric(bet[[i]])/maxbet, closeness_centrality = as.numeric(close[[i]]),closeness = as.numeric(close[[i]])/maxclose)
+# }
 
-print('completed writing node User')
-Sys.time()
+# print('completed writing node User')
+# Sys.time()
 
 queryt =  "
 MATCH (t:Topic)<-[r]-(:User)
