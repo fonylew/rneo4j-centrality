@@ -1,0 +1,273 @@
+{
+  "columns" : [ "u" ],
+  "data" : [ [ {
+    "metadata" : {
+      "id" : 0,
+      "labels" : [ "User" ]
+    },
+    "data" : {
+      "betweenness_centrality" : 0,
+      "closeness_centrality" : 0,
+      "degree" : 0,
+      "id" : 218095
+    },
+    "paged_traverse" : "http://104.197.136.113:7474/db/data/node/0/paged/traverse/{returnType}{?pageSize,leaseTime}",
+    "outgoing_relationships" : "http://104.197.136.113:7474/db/data/node/0/relationships/out",
+    "outgoing_typed_relationships" : "http://104.197.136.113:7474/db/data/node/0/relationships/out/{-list|&|types}",
+    "labels" : "http://104.197.136.113:7474/db/data/node/0/labels",
+    "create_relationship" : "http://104.197.136.113:7474/db/data/node/0/relationships",
+    "traverse" : "http://104.197.136.113:7474/db/data/node/0/traverse/{returnType}",
+    "extensions" : { },
+    "all_relationships" : "http://104.197.136.113:7474/db/data/node/0/relationships/all",
+    "all_typed_relationships" : "http://104.197.136.113:7474/db/data/node/0/relationships/all/{-list|&|types}",
+    "property" : "http://104.197.136.113:7474/db/data/node/0/properties/{key}",
+    "self" : "http://104.197.136.113:7474/db/data/node/0",
+    "incoming_relationships" : "http://104.197.136.113:7474/db/data/node/0/relationships/in",
+    "properties" : "http://104.197.136.113:7474/db/data/node/0/properties",
+    "incoming_typed_relationships" : "http://104.197.136.113:7474/db/data/node/0/relationships/in/{-list|&|types}"
+  } ], [ {
+    "metadata" : {
+      "id" : 1,
+      "labels" : [ "User" ]
+    },
+    "data" : {
+      "estimate_betweenness" : 2236216.33249663,
+      "norm_ebet" : 0.0118937654093758,
+      "betweenness_centrality" : 2236216.33249663,
+      "closeness_centrality" : 1.1630632060884E-8,
+      "degree" : 127,
+      "normalize_closeness" : 7.54955957704043E-4,
+      "id" : 1188101
+    },
+    "paged_traverse" : "http://104.197.136.113:7474/db/data/node/1/paged/traverse/{returnType}{?pageSize,leaseTime}",
+    "outgoing_relationships" : "http://104.197.136.113:7474/db/data/node/1/relationships/out",
+    "outgoing_typed_relationships" : "http://104.197.136.113:7474/db/data/node/1/relationships/out/{-list|&|types}",
+    "labels" : "http://104.197.136.113:7474/db/data/node/1/labels",
+    "create_relationship" : "http://104.197.136.113:7474/db/data/node/1/relationships",
+    "traverse" : "http://104.197.136.113:7474/db/data/node/1/traverse/{returnType}",
+    "extensions" : { },
+    "all_relationships" : "http://104.197.136.113:7474/db/data/node/1/relationships/all",
+    "all_typed_relationships" : "http://104.197.136.113:7474/db/data/node/1/relationships/all/{-list|&|types}",
+    "property" : "http://104.197.136.113:7474/db/data/node/1/properties/{key}",
+    "self" : "http://104.197.136.113:7474/db/data/node/1",
+    "incoming_relationships" : "http://104.197.136.113:7474/db/data/node/1/relationships/in",
+    "properties" : "http://104.197.136.113:7474/db/data/node/1/properties",
+    "incoming_typed_relationships" : "http://104.197.136.113:7474/db/data/node/1/relationships/in/{-list|&|types}"
+  } ], [ {
+    "metadata" : {
+      "id" : 2,
+      "labels" : [ "User" ]
+    },
+    "data" : {
+      "betweenness_centrality" : 0,
+      "closeness_centrality" : 0,
+      "degree" : 0,
+      "id" : 648021
+    },
+    "paged_traverse" : "http://104.197.136.113:7474/db/data/node/2/paged/traverse/{returnType}{?pageSize,leaseTime}",
+    "outgoing_relationships" : "http://104.197.136.113:7474/db/data/node/2/relationships/out",
+    "outgoing_typed_relationships" : "http://104.197.136.113:7474/db/data/node/2/relationships/out/{-list|&|types}",
+    "labels" : "http://104.197.136.113:7474/db/data/node/2/labels",
+    "create_relationship" : "http://104.197.136.113:7474/db/data/node/2/relationships",
+    "traverse" : "http://104.197.136.113:7474/db/data/node/2/traverse/{returnType}",
+    "extensions" : { },
+    "all_relationships" : "http://104.197.136.113:7474/db/data/node/2/relationships/all",
+    "all_typed_relationships" : "http://104.197.136.113:7474/db/data/node/2/relationships/all/{-list|&|types}",
+    "property" : "http://104.197.136.113:7474/db/data/node/2/properties/{key}",
+    "self" : "http://104.197.136.113:7474/db/data/node/2",
+    "incoming_relationships" : "http://104.197.136.113:7474/db/data/node/2/relationships/in",
+    "properties" : "http://104.197.136.113:7474/db/data/node/2/properties",
+    "incoming_typed_relationships" : "http://104.197.136.113:7474/db/data/node/2/relationships/in/{-list|&|types}"
+  } ], [ {
+    "metadata" : {
+      "id" : 3,
+      "labels" : [ "User" ]
+    },
+    "data" : {
+      "estimate_betweenness" : 3528.44156923054,
+      "norm_ebet" : 1.87667247015695E-5,
+      "betweenness_centrality" : 3528.44156923054,
+      "closeness_centrality" : 1.16276550892857E-8,
+      "degree" : 24,
+      "normalize_closeness" : 7.54762719500623E-4,
+      "id" : 236938
+    },
+    "paged_traverse" : "http://104.197.136.113:7474/db/data/node/3/paged/traverse/{returnType}{?pageSize,leaseTime}",
+    "outgoing_relationships" : "http://104.197.136.113:7474/db/data/node/3/relationships/out",
+    "outgoing_typed_relationships" : "http://104.197.136.113:7474/db/data/node/3/relationships/out/{-list|&|types}",
+    "labels" : "http://104.197.136.113:7474/db/data/node/3/labels",
+    "create_relationship" : "http://104.197.136.113:7474/db/data/node/3/relationships",
+    "traverse" : "http://104.197.136.113:7474/db/data/node/3/traverse/{returnType}",
+    "extensions" : { },
+    "all_relationships" : "http://104.197.136.113:7474/db/data/node/3/relationships/all",
+    "all_typed_relationships" : "http://104.197.136.113:7474/db/data/node/3/relationships/all/{-list|&|types}",
+    "property" : "http://104.197.136.113:7474/db/data/node/3/properties/{key}",
+    "self" : "http://104.197.136.113:7474/db/data/node/3",
+    "incoming_relationships" : "http://104.197.136.113:7474/db/data/node/3/relationships/in",
+    "properties" : "http://104.197.136.113:7474/db/data/node/3/properties",
+    "incoming_typed_relationships" : "http://104.197.136.113:7474/db/data/node/3/relationships/in/{-list|&|types}"
+  } ], [ {
+    "metadata" : {
+      "id" : 4,
+      "labels" : [ "User" ]
+    },
+    "data" : {
+      "betweenness_centrality" : 0,
+      "closeness_centrality" : 0,
+      "degree" : 0,
+      "id" : 1108215
+    },
+    "paged_traverse" : "http://104.197.136.113:7474/db/data/node/4/paged/traverse/{returnType}{?pageSize,leaseTime}",
+    "outgoing_relationships" : "http://104.197.136.113:7474/db/data/node/4/relationships/out",
+    "outgoing_typed_relationships" : "http://104.197.136.113:7474/db/data/node/4/relationships/out/{-list|&|types}",
+    "labels" : "http://104.197.136.113:7474/db/data/node/4/labels",
+    "create_relationship" : "http://104.197.136.113:7474/db/data/node/4/relationships",
+    "traverse" : "http://104.197.136.113:7474/db/data/node/4/traverse/{returnType}",
+    "extensions" : { },
+    "all_relationships" : "http://104.197.136.113:7474/db/data/node/4/relationships/all",
+    "all_typed_relationships" : "http://104.197.136.113:7474/db/data/node/4/relationships/all/{-list|&|types}",
+    "property" : "http://104.197.136.113:7474/db/data/node/4/properties/{key}",
+    "self" : "http://104.197.136.113:7474/db/data/node/4",
+    "incoming_relationships" : "http://104.197.136.113:7474/db/data/node/4/relationships/in",
+    "properties" : "http://104.197.136.113:7474/db/data/node/4/properties",
+    "incoming_typed_relationships" : "http://104.197.136.113:7474/db/data/node/4/relationships/in/{-list|&|types}"
+  } ], [ {
+    "metadata" : {
+      "id" : 5,
+      "labels" : [ "User" ]
+    },
+    "data" : {
+      "estimate_betweenness" : 56344.5305722385,
+      "norm_ebet" : 2.99679695112241E-4,
+      "betweenness_centrality" : 56344.5305722385,
+      "closeness_centrality" : 1.1625881910337E-8,
+      "degree" : 16,
+      "normalize_closeness" : 7.54647620681886E-4,
+      "id" : 141548
+    },
+    "paged_traverse" : "http://104.197.136.113:7474/db/data/node/5/paged/traverse/{returnType}{?pageSize,leaseTime}",
+    "outgoing_relationships" : "http://104.197.136.113:7474/db/data/node/5/relationships/out",
+    "outgoing_typed_relationships" : "http://104.197.136.113:7474/db/data/node/5/relationships/out/{-list|&|types}",
+    "labels" : "http://104.197.136.113:7474/db/data/node/5/labels",
+    "create_relationship" : "http://104.197.136.113:7474/db/data/node/5/relationships",
+    "traverse" : "http://104.197.136.113:7474/db/data/node/5/traverse/{returnType}",
+    "extensions" : { },
+    "all_relationships" : "http://104.197.136.113:7474/db/data/node/5/relationships/all",
+    "all_typed_relationships" : "http://104.197.136.113:7474/db/data/node/5/relationships/all/{-list|&|types}",
+    "property" : "http://104.197.136.113:7474/db/data/node/5/properties/{key}",
+    "self" : "http://104.197.136.113:7474/db/data/node/5",
+    "incoming_relationships" : "http://104.197.136.113:7474/db/data/node/5/relationships/in",
+    "properties" : "http://104.197.136.113:7474/db/data/node/5/properties",
+    "incoming_typed_relationships" : "http://104.197.136.113:7474/db/data/node/5/relationships/in/{-list|&|types}"
+  } ], [ {
+    "metadata" : {
+      "id" : 6,
+      "labels" : [ "User" ]
+    },
+    "data" : {
+      "estimate_betweenness" : 2089762.13575464,
+      "norm_ebet" : 0.0111148193682639,
+      "betweenness_centrality" : 2089762.13575464,
+      "closeness_centrality" : 1.16304544519827E-8,
+      "degree" : 158,
+      "normalize_closeness" : 7.54944428932649E-4,
+      "id" : 984124
+    },
+    "paged_traverse" : "http://104.197.136.113:7474/db/data/node/6/paged/traverse/{returnType}{?pageSize,leaseTime}",
+    "outgoing_relationships" : "http://104.197.136.113:7474/db/data/node/6/relationships/out",
+    "outgoing_typed_relationships" : "http://104.197.136.113:7474/db/data/node/6/relationships/out/{-list|&|types}",
+    "labels" : "http://104.197.136.113:7474/db/data/node/6/labels",
+    "create_relationship" : "http://104.197.136.113:7474/db/data/node/6/relationships",
+    "traverse" : "http://104.197.136.113:7474/db/data/node/6/traverse/{returnType}",
+    "extensions" : { },
+    "all_relationships" : "http://104.197.136.113:7474/db/data/node/6/relationships/all",
+    "all_typed_relationships" : "http://104.197.136.113:7474/db/data/node/6/relationships/all/{-list|&|types}",
+    "property" : "http://104.197.136.113:7474/db/data/node/6/properties/{key}",
+    "self" : "http://104.197.136.113:7474/db/data/node/6",
+    "incoming_relationships" : "http://104.197.136.113:7474/db/data/node/6/relationships/in",
+    "properties" : "http://104.197.136.113:7474/db/data/node/6/properties",
+    "incoming_typed_relationships" : "http://104.197.136.113:7474/db/data/node/6/relationships/in/{-list|&|types}"
+  } ], [ {
+    "metadata" : {
+      "id" : 7,
+      "labels" : [ "User" ]
+    },
+    "data" : {
+      "estimate_betweenness" : 63430.5459649738,
+      "norm_ebet" : 3.37368090257055E-4,
+      "betweenness_centrality" : 63430.5459649738,
+      "closeness_centrality" : 1.16250746489637E-8,
+      "degree" : 14,
+      "id" : 690764
+    },
+    "paged_traverse" : "http://104.197.136.113:7474/db/data/node/7/paged/traverse/{returnType}{?pageSize,leaseTime}",
+    "outgoing_relationships" : "http://104.197.136.113:7474/db/data/node/7/relationships/out",
+    "outgoing_typed_relationships" : "http://104.197.136.113:7474/db/data/node/7/relationships/out/{-list|&|types}",
+    "labels" : "http://104.197.136.113:7474/db/data/node/7/labels",
+    "create_relationship" : "http://104.197.136.113:7474/db/data/node/7/relationships",
+    "traverse" : "http://104.197.136.113:7474/db/data/node/7/traverse/{returnType}",
+    "extensions" : { },
+    "all_relationships" : "http://104.197.136.113:7474/db/data/node/7/relationships/all",
+    "all_typed_relationships" : "http://104.197.136.113:7474/db/data/node/7/relationships/all/{-list|&|types}",
+    "property" : "http://104.197.136.113:7474/db/data/node/7/properties/{key}",
+    "self" : "http://104.197.136.113:7474/db/data/node/7",
+    "incoming_relationships" : "http://104.197.136.113:7474/db/data/node/7/relationships/in",
+    "properties" : "http://104.197.136.113:7474/db/data/node/7/properties",
+    "incoming_typed_relationships" : "http://104.197.136.113:7474/db/data/node/7/relationships/in/{-list|&|types}"
+  } ], [ {
+    "metadata" : {
+      "id" : 8,
+      "labels" : [ "User" ]
+    },
+    "data" : {
+      "estimate_betweenness" : 10390.1301485422,
+      "norm_ebet" : 5.52619926631492E-5,
+      "betweenness_centrality" : 10390.1301485422,
+      "closeness_centrality" : 1.16228249641032E-8,
+      "degree" : 3,
+      "id" : 1020243
+    },
+    "paged_traverse" : "http://104.197.136.113:7474/db/data/node/8/paged/traverse/{returnType}{?pageSize,leaseTime}",
+    "outgoing_relationships" : "http://104.197.136.113:7474/db/data/node/8/relationships/out",
+    "outgoing_typed_relationships" : "http://104.197.136.113:7474/db/data/node/8/relationships/out/{-list|&|types}",
+    "labels" : "http://104.197.136.113:7474/db/data/node/8/labels",
+    "create_relationship" : "http://104.197.136.113:7474/db/data/node/8/relationships",
+    "traverse" : "http://104.197.136.113:7474/db/data/node/8/traverse/{returnType}",
+    "extensions" : { },
+    "all_relationships" : "http://104.197.136.113:7474/db/data/node/8/relationships/all",
+    "all_typed_relationships" : "http://104.197.136.113:7474/db/data/node/8/relationships/all/{-list|&|types}",
+    "property" : "http://104.197.136.113:7474/db/data/node/8/properties/{key}",
+    "self" : "http://104.197.136.113:7474/db/data/node/8",
+    "incoming_relationships" : "http://104.197.136.113:7474/db/data/node/8/relationships/in",
+    "properties" : "http://104.197.136.113:7474/db/data/node/8/properties",
+    "incoming_typed_relationships" : "http://104.197.136.113:7474/db/data/node/8/relationships/in/{-list|&|types}"
+  } ], [ {
+    "metadata" : {
+      "id" : 9,
+      "labels" : [ "User" ]
+    },
+    "data" : {
+      "estimate_betweenness" : 924299.406544661,
+      "norm_ebet" : 0.00491607191563341,
+      "betweenness_centrality" : 924299.406544661,
+      "closeness_centrality" : 1.16309246607204E-8,
+      "degree" : 130,
+      "normalize_closeness" : 7.54974950652022E-4,
+      "id" : 109880
+    },
+    "paged_traverse" : "http://104.197.136.113:7474/db/data/node/9/paged/traverse/{returnType}{?pageSize,leaseTime}",
+    "outgoing_relationships" : "http://104.197.136.113:7474/db/data/node/9/relationships/out",
+    "outgoing_typed_relationships" : "http://104.197.136.113:7474/db/data/node/9/relationships/out/{-list|&|types}",
+    "labels" : "http://104.197.136.113:7474/db/data/node/9/labels",
+    "create_relationship" : "http://104.197.136.113:7474/db/data/node/9/relationships",
+    "traverse" : "http://104.197.136.113:7474/db/data/node/9/traverse/{returnType}",
+    "extensions" : { },
+    "all_relationships" : "http://104.197.136.113:7474/db/data/node/9/relationships/all",
+    "all_typed_relationships" : "http://104.197.136.113:7474/db/data/node/9/relationships/all/{-list|&|types}",
+    "property" : "http://104.197.136.113:7474/db/data/node/9/properties/{key}",
+    "self" : "http://104.197.136.113:7474/db/data/node/9",
+    "incoming_relationships" : "http://104.197.136.113:7474/db/data/node/9/relationships/in",
+    "properties" : "http://104.197.136.113:7474/db/data/node/9/properties",
+    "incoming_typed_relationships" : "http://104.197.136.113:7474/db/data/node/9/relationships/in/{-list|&|types}"
+  } ] ]
+}

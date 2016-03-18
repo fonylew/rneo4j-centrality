@@ -33,6 +33,9 @@ sort_deg=sort(deg,decreasing=TRUE)
 write.csv(sort_deg,"degree_user_sort.csv")  
 Sys.time()
 
+# BETWEENNESS & CLOSENESS
+
+system.time({
 query =  "
 MATCH (p1:User)-[:POSTED]->(:Topic)<-[:REPLIED]-(p2:User)
 WHERE p1.id < p2.id
@@ -41,10 +44,13 @@ order by weight desc
 "
 data = cypher(neo4j, query)
 g = graph.data.frame(data, directed = F)
+})
 
-bet = betweenness(g)
+system.time({
+bet = estimate_betweenness(g,cutoff=-1, weights = NULL)
 summary(bet)
 maxbet = max(bet)
+})
 
 for(i in 1:length(bet))
 {
@@ -56,15 +62,19 @@ print('completed betweenness')
 save(bet, file="betweenness_centrality.Rdata")
 Sys.time()
 
-close = closeness(g)
+system.time({
+close = estimate_closeness(g,cutoff=-1, weights = NULL,normalize=TRUE)
 summary(close)
 maxclose = max(close)
+})
 
+system.time({
 for(i in 1:length(close))
 {
     unode = getLabeledNodes(neo4j, "User", id = as.integer(names(close[i]))) 
-    updateProp(unode[[1]],closeness_centrality = as.numeric(close[[i]]),closeness = as.numeric(close[[i]])/maxclose)
+    updateProp(unode[[1]],closeness_centrality = as.numeric(close[[i]]))
 }
+})
 
 print('completed closeness')
 save(close, file="closeness_centrality.Rdata")
@@ -80,28 +90,60 @@ Sys.time()
 # print('completed writing node User')
 # Sys.time()
 
+
+
+system.time({
 queryt =  "
-MATCH (t:Topic)<-[r]-(:User)
-RETURN t.id,COUNT(r) AS weight
+MATCH (n:User)-[r:REPLIED]->(p:Topic)
+WITH count(r) as weight,p.id as pid
+RETURN pid,weight
 order by weight desc
 "
 datat = cypher(neo4j, queryt)
-gt = graph.data.frame(datat, directed = F)
 
-degt = degree(gt)
-summary(degt)
 print('completed degree')
-save(degt, file="degree_topic.Rdata")
-Sys.time()
-
+save(datat, file="degree_topic.Rdata")
 print('writing Topic in neo4j...')
-for(i in 1:length(degt))
+for(i in 1:nrow(datat))
 {
-    unode = getLabeledNodes(neo4j, "Topic", id = as.integer(names(degt[i])))
-    updateProp(unode[[1]],degree = as.numeric(degt[[i]]))
+    unode = getLabeledNodes(neo4j, "Topic", id = as.integer(datat$pid[i]))
+    updateProp(unode[[1]],degree = as.numeric(datat$weight[i]))
 }
+})
 
 print('completed writing node Topic')
 Sys.time()
 
 print('- Finished -')
+
+print('calculating Graph Diameter')
+system.time({
+di=diameter(g)
+})
+
+###########################
+save(ebet, file="estimate_betweenness.Rdata")
+max_ebet = max(ebet)
+min_ebet = min(ebet)
+norm_ebet = (ebet-min_ebet)/(max_ebet-min_ebet)
+
+system.time({
+for(i in 1:length(ebet))
+{
+    unode = getLabeledNodes(neo4j, "User", id = as.integer(names(ebet[i]))) 
+    updateProp(unode[[1]],estimate_betweenness = as.numeric(ebet[[i]]),norm_ebet = as.numeric(norm_ebet[[i]]))
+}
+})
+
+system.time({
+close = estimate_closeness(g,cutoff=-1, weights = NULL,normalize=TRUE)
+summary(close)
+})
+
+system.time({
+for(i in 1:length(close))
+{
+    unode = getLabeledNodes(neo4j, "User", id = as.integer(names(close[i]))) 
+    updateProp(unode[[1]],normalize_closeness = as.numeric(close[[i]]))
+}
+})
