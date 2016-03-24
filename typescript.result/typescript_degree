@@ -1,0 +1,346 @@
+Script started on Sun 13 Mar 2016 11:58:04 AM UTC
+Fony@gke-cluster-r-5ad41d3a-node-yekg:~$ xr
+
+R version 3.2.3 (2015-12-10) -- "Wooden Christmas-Tree"
+Copyright (C) 2015 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> ibrary(RNeo4j)
+Error: could not find function "ibrary"
+> library(igraph)
+
+Attaching package: ‘igraph’
+
+The following objects are masked from ‘package:stats’:
+
+    decompose, spectrum
+
+The following object is masked from ‘package:base’:
+
+    union
+
+> library(igraph)
+> library(jsonlite)
+> setwd('~/rneo4j-centrality')
+> getwd()
+[1] "/root/rneo4j-centrality"
+> neo4j = startGraph("http://104.197.210.78:7474/db/data/")
+Error: could not find function "startGraph"
+> neo4j = startGraph("http://104.197.210.78:7474/db/data/")> getwd()                                                  > getwd()> setwd('~/rneo4j-centrality')> library(jsonlite)           igraph)  > ibrary(RNeo4j) 
+Error: could not find function "ibrary"
+> ibrary(RNeo4j)library(RNeo4j)> l
+> library(RNeo4j)> ibrary(RNeo4j) > neo4j = startGraph("http://104.197.210.78:7474/db/data/")
+> Sys.time()
+[1] "2016-03-13 11:59:28 UTC"
+> queryu =  "
++ MATCH (p1:User)-[:POSTED]->(:Topic)<-[r:REPLIED]-(p2:User)
++ WHERE p1.id < p2.id
++ RETURN p1.id, p2.id, COUNT(r) AS weight
++ order by weight desc
++ "
+> Sys.time()
+[1] "2016-03-13 12:06:37 UTC"
+> queryt =  "
++ MATCH (t:Topic)<-[r]-(:User)
++ RETURN t.id,COUNT(r) AS weight
++ order by weight desc
++ "
+> datat = cypher(neo4j, queryt)
+> gt = graph.data.frame(datat, directed = F)
+> gt = graph.data.frame(datat, directed = F)> datat = cypher(neo4j, queryt)             > "                            > "order by weight desc> RETURN t.id,COUNT(r) AS weight> MATCH (t:Topic)<-[r]-(:User)  > queryt =  "                 > queryt =  "> Sys.time() > "         > "Sys.time()
+[1] "2016-03-13 12:12:32 UTC"
+> degt = degree(gt)
+> summary(degt)
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+      1       1       1       2       1  158200 
+> print('completed degree')
+[1] "completed degree"
+> save(degt, file="degree_topic.Rdata")
+> print('writing Topic in neo4j...')
+[1] "writing Topic in neo4j..."
+> for(i in 1:length(deg))
++ {
++     unode = getLabeledNodes(neo4j, "Topic", id = as.integer(names<dNodes(neo4j, "Topic", id = as.integer(names(                     degt[i])))
++     updateProp(unode[[1]],degree = as.numeric(degt[[i]]))
++ }
+Error: object 'deg' not found
+> }    updateProp(unode[[1]],degree = as.numeric(degt[[i]]))<4j, "Topic", id = as.integer(names(degt[i])))             > {                                           > {for(i in 1:length(deg))> for(i in 1:length(degt))
++ for(i in 1:length(degt))+ }                       + }for(i in 1:length(degt))+                         + for(i in 1:length(degt))+ }                       + }    updateProp(unode[[1]],degree = as.numeric(degt[[i]]))<4j, "Topic", id = as.integer(names(degt[i])))             +     updateProp(unode[[1]],degree = as.numeric(degt[[i]]))+ }                                                        + }for(i in 1:length(degt))+                         + {
++     unode = getLabeledNodes(neo4j, "Topic", id = as.integer(names<dNodes(neo4j, "Topic", id = as.integer(names(                     degt[i])))+     unode = getLabeledNodes(neo4j, "Topic", id = as.integer(names(>
++     updateProp(unode[[1]],degree = as.numeric(degt[[i]]))
++ }
+
+
+
+^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[A^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B ^[  ^[  ^[  ^[                                                                                                                                                                                                                                                                                                                                                                                                                 
+^[  
+Error in UseMethod("updateProp") : 
+  no applicable method for 'updateProp' applied to an object of class "NULL"
+> 
+> 
+> 
+> 
+> 
+> degthdegtedegtadegt> headdegt
+Error: object 'headdegt' not found
+> 9 head(degt)
+31754895 32039247 31923137 32098859 32306180 31826112 
+       1        1        1        1        1        1 
+> queryu
+[1] "\nMATCH (p1:User)-[:POSTED]->(:Topic)<-[r:REPLIED]-(p2:User)\nWHERE p1.id < p2.id\nRETURN p1.id, p2.id, COUNT(r) AS weight\norder by weight desc\n"
+> datau
+Error: object 'datau' not found
+> datau = cypher(neo4j, queryu)
+> gu = graph.data.frame(datau, directed = F)
+> deg = degree(gu)
+> summary(deg)
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+    1.00     2.00     5.00    21.74    16.00 10240.00 
+> maxdegree(deg)> mmaxdegree(deg)> mamaxdegree(deg)> maxmaxdegree(deg)> maxdmaxdegree(deg)> maxdemaxdegree(deg)> maxdegmaxdegree(deg)> maxdeg maxdegree(deg)> maxdeg =maxdegree(deg)> maxdeg = maxdegree(deg)> maxdeg = 
+Error: could not find function "maxdegree"
+> maxdeg = maxdegree(deg)> maxdeg = maxd> maxdeg = maxde> maxdeg = maxdeg> maxdeg = maxdegr> maxdeg = maxdegre> maxdeg = maxdegree> maxdeg = maxdegree(> maxdeg = maxdegre> maxdeg = maxdegree(deg) (deg) (deg) (deg) (deg) (deg) 
+> print('completed User degree')
+[1] "completed User degree"
+> save(deg, file="degree_user.Rdata")
+> Sys.time()
+[1] "2016-03-14 08:27:59 UTC"
+> for(i in 1:length(deg))
++ {
++     unode = getLabeledNodes(neo4j, "User", id = as.integer(names(<dNodes(neo4j, "User", id = as.integer(names(d                     eg[i])))
++     updateProp(unode[[1]],degree = as.numeric(deg[[i]]))
++ }
+> }    updateProp(unode[[1]],degree = as.numeric(deg[[i]]))<eo4j, "User", id = as.integer(names(deg[i])))            > {                                           > {for(i in 1:length(deg))> Sys.time()             > save(deg, file="degree_user.Rdata")> print('completed User degree')     > maxdeg = max(deg)             degree(deg)> summary(deg)           > deg = degree(gu)> gu = graph.data.frame(datau, directed = F)> datau = cypher(neo4j, queryu)             > datau                        > datau> queryu> datau  = cypher(neo4j, queryu)> gu = graph.data.frame(datau, directed = F)> deg = degree(gu)                          > deg = degree(gu)> summary(deg)    > maxdeg = maxdegree(deg)(deg)      > print('completed User degree')> save(deg, file="degree_user.Rdata")> Sys.time()                         > Sys.time()> for(i in 1:length(deg))> {                      > {<eo4j, "User", id = as.integer(names(deg[i])))>     updateProp(unode[[1]],degree = as.numeric(deg[[i]]))> }                                                       > } ห Sys.time()
+[1] "2016-03-14 14:19:14 UTC"
+> query =  "
++ MATCH (p1:User)-[:POSTED]->(:Topic)<-[:REPLIED]-(p2:User)
++ WHERE p1.id < p2.id
++ RETURN p1.id, p2.id, COUNT(*) AS weight
++ order by weight desc
++ "
+> data = cypher(neo4j, query)
+> bet = betweenness(g)
+Error in match(x, table, nomatch = 0L) : object 'g' not found
+> g = graph.data.frame(data, directed = F)
+> Sys.time
+function () 
+.POSIXct(.Internal(Sys.time()))
+<bytecode: 0x22fbc88>
+<environment: namespace:base>
+> Sys.time()
+[1] "2016-03-14 15:43:38 UTC"
+> bet = betweenness(g)
+^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B                                                            
+^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B^[[B                                    
+
+
+^[a^[d      
+
+
+^C
+> Syste  .time()
+[1] "2016-03-15 14:59:27 UTC"
+> length(deg_ )
+[1] 172258
+> length(degt)
+[1] 1114516
+> length(bet)
+Error: object 'bet' not found
+> rm(degt)
+> เแ๖๗    gc()
+           used  (Mb) gc trigger  (Mb) max used   (Mb)
+Ncells  1607861  85.9   15628672 834.7 24419802 1304.2
+Vcells 39801313 303.7   93893969 716.4 93893968  716.4
+> soss  rt_deg=sort(deg> gc()             > gc()> rm(degt)> length(bet)degt)) > Sys.time() > bet = betweenness(g)> Sys.time()            > g = graph.data.frame(data, directed = F)> bet = betweenness(g)                    > data = cypher(neo4j, query)> "                          > "order by weight desc> RETURN p1.id, p2.id, COUNT(*) AS weight> order by weight desc                   > "                   > "data = cypher(neo4j, query)> bet = betweenness(g)       > g = graph.data.frame(data, directed = F)> Sys.time                                > Sys.time()> bet = betweenness(g)> Sys.time()          > length(deg)t)bet) > rm(degt)   > gc()    > sort_deg=sort(deg             (     sort_deg=sort(deg,decreasing=TRUE)
+> head(sort_deg)
+ 327698  184197  199910  192305 1428399  148143 
+  10237    4324    3118    2612    2574    2395 
+> save(sort_deg,file=
++ "degree_user_sort.csv) ")
+> write.csv(d sort_deg,"degree_user_sort.csv",row.names=FALSE)
+> write.csv(sort_deg,"degree_user_sort.csv",row.names=FALSE)) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) 
+> write.csv(sort_deg,"degree_user_sort.csv"),row.names=FALSE)> "degree_user_sort.csv")                                   > "degree_user_sort.csv")> save(sort_deg,file=    > head(sort_deg)     > save(sort_deg,file=> "degree_user_sort.csv")> write.csv(sort_deg,"degree_user_sort.csv",row.names=FALSE))                >                                           > write.csv(sort_deg,"degree_user_sort.csv"),row.names=FALSE)> "degree_user_sort.csv")                                   > "degree_user_sort.csv")> save(sort_deg,file=    > head(sort_deg)     > sort_deg=sort(deg,decreasing=TRUE)> head(sort_deg)                    > head(sort_deg)> save(sort_deg,file=> "degree_user_sort.csv")> write.csv(sort_deg,"degree_user_sort.csv",row.names=FALSE))                >                                           > write.csv(sort_deg,"degree_user_sort.csv"),row.names=FALSE)> "degree_user_sort.csv")                                   > "degree_user_sort.csv")> write.csv(sort_deg,"degree_user_sort.csv",row.names=FALSE))                ,row.names=FALSE)> "degree_user_sort.csv")                                   > "degree_user_sort.csv")> save(sort_deg,file=    > head(sort_deg)     > sort_deg=sort(deg,decreasing=TRUE)> gc()                              > gc()> rm(degt)> length(bet)degt)) > Sys.time() > bet = betweenness(g)> Sys.time()          > bet = betweenness(g)
+^C
+> close = closeness(g)
+^C
+^C
+
+
+^C
+
+dvx]bh',kdhwfh
+^[
+^C
+^C^C^C^C^C
+Fony@gke-cluster-r-5ad41d3a-node-yekg:~$ x[Kls
+aptlist  [0m[01;34mrneo4j-centrality[0m  typescript
+Fony@gke-cluster-r-5ad41d3a-node-yekg:~$ cat ye[K[K[K[K[K[Kvim typescript 
+[?1049h[?1h=[1;57r[34l[34h[?25h[23m[24m[0m[H[J[?25l[57;1H"typescript" [noeol] 175L, 12288C[1;1HScript started on Sun 13 Mar 2016 11:58:04 AM UTC
+Fony@gke-cluster-r-5ad41d3a-node-yekg:~$ xr[34m^M
+^M^M[0m
+R version 3.2.3 (2015-12-10) -- "Wooden Christmas-Tree"[34m^M^M[0m
+Copyright (C) 2015 The R Foundation for Statistical Computing[34m^M^M[0m
+Platform: x86_64-pc-linux-gnu (64-bit)[34m^M^M
+^M^M[0m
+R is free software and comes with ABSOLUTELY NO WARRANTY.[34m^M^M[0m
+You are welcome to redistribute it under certain conditions.[34m^M^M[0m
+Type 'license()' or 'licence()' for distribution details.[34m^M^M
+^M^M[0m
+  Natural language support but running in an English locale[34m^M^M
+^M^M[0m
+R is a collaborative project with many contributors.[34m^M^M[0m
+Type 'contributors()' for more information and[34m^M^M[0m
+'citation()' on how to cite R or R packages in publications.[34m^M^M
+^M^M[0m
+Type 'demo()' for some demos, 'help()' for on-line help, or[34m^M^M[0m
+'help.start()' for an HTML browser interface to help.[34m^M^M[0m
+Type 'q()' to quit R.[34m^M^M
+^M^M[0m
+> ibrary(RNeo4j)[34m^M^M[0m
+Error: could not find function "ibrary"[34m^M^M[0m
+> library(igraph)[34m^M^M
+^M^M[0m
+Attaching package: ‘igraph’[34m^M^M
+^M^M[0m
+The following objects are masked from ‘package:stats’:[34m^M^M
+^M^M[0m
+    decompose, spectrum[34m^M^M
+^M^M[0m
+The following object is masked from ‘package:base’:[34m^M^M
+^M^M[0m
+    union[34m^M^M
+^M^M[0m
+> library(igraph)[34m^M^M[0m
+> library(jsonlite)[34m^M^M[0m
+> setwd('~/rneo4j-centrality')[34m^M^M[0m
+> getwd()[34m^M^M[0m
+[1] "/root/rneo4j-centrality"[34m^M^M[0m
+> neo4j = startGraph("http://104.197.210.78:7474/db/data/")[34m^M^M[0m
+Error: could not find function "startGraph"[34m^M^M[0m
+> neo4j = startGraph("http://104.197.210.78:7474/db/data/")[34m^M^M[0m> gg[44;1Hetwd()[49C [34m^M^M[0m> getww[45;1Hd()[34m^M^M[0m> setwd('~/rneo4j-centrality')[34m^M^M[0m> library(jsonlite)       [46;1H     [34m^H^H^H^H^H^H^H^H^H^H^H^H^H^H^H^H^H^H^H^H[0migraph)  [34m^H^H^M^M[0m> ibb[47;1Hrary(RNeo4j) [34m^H^M^M[0m
+Error: could not find function "ibrary"[34m^M^M[0m
+> ibrary(RNeo4j)[34m^H^H^H^H^H^H^H^H^H^H^H^H^H^H^G^G^G^G[0mlibrary(RNeo4jj[50;1H)[34m^M^M[0m> l[34m^M^M[0m
+> library(RNeo4j)[34m^M^M[0m> ibrary(RNeo4j) [34m^H^M^M[0m> neo4j = startGraph(""[52;1Hhttp://104.197.210.78:7474/db/data/")[34m^M^M[0m
+> Sys.time()[34m^M^M[0m
+[1] "2016-03-13 11:59:28 UTC"[34m^M^M[0m
+> queryu =  "[34m^M^M[0m
++ MATCH (p1:User)-[:POSTED]->(:Topic)<-[r:REPLIED]-(p2:User)[34m^M^M[0m[57;49H1,1[11CTop[1;1H[34h[?25h[?25l[23m[24m[0m[H[J[1;1H[34m^M^M[0m
+^[a^[d[34m^H[0m [34m^H^H[0m [34m^H^H[0m [34m^H^H[0m [34m^H^H[0m [34m^H^H[0m [34m^H^M^M
+^M^M
+^M^M[0m
+^C[34m^M^M[0m
+> Syste[34m^H[0m [34m^H^H[0m [34m^H[0m.time()[34m^M^M[0m
+[1] "2016-03-15 14:59:27 UTC"[34m^M^M[0m
+> length(deg_[34m^H[0m [34m^H[0m)[34m^M^M[0m
+[1] 172258[34m^M^M[0m
+> length(degt)[34m^M^M[0m
+[1] 1114516[34m^M^M[0m
+> length(bet)[34m^M^M[0m
+Error: object 'bet' not found[34m^M^M[0m
+> rm(degt)[34m^M^M[0m
+> เแ๖๗[34m^H[0m [34m^H^H[0m [34m^H^H[0m [34m^H^H[0m [34m^H^G^G^G^G^G^G^G[0mgc()[34m^M^M[0m[16;11H used  (Mb) gc trigger  (Mb) max used   (Mb)[34m^M^M[0m
+Ncells  1607861  85.9   15628672 834.7 24419802 1304.2[34m^M^M[0m
+Vcells 39801313 303.7   93893969 716.4 93893968  716.4[34m^M^M[0m
+> soss[34m^H[0m [34m^H^H[0m [34m^H[0mrt_deg=sort(deg[34m^M^M[0m> gc()[12C [34m^M^M[0m> gc()[34m^MM[20;1H^M[0m> rm(degt)[34m^M^M[0m> length(bet)[34m^H^H^H^H[0mdegt)[34m^H^H[0m) [34m^H^M^M[0m> Sys.time())[21;1H [34m^H^M^M[0m> bet = betweenness(g)[34m^M^M[0m> Sys.time()[9C [34m^H^H^H^H^H^^[22;1HH^H^H^H^H^H^H[0m  [34m^H^H^M^M[0m> g = graph.data.frame(data, directed = F)[34m^^[23;1HM^M[0m> bet = betweenness(g)[19C [34m^H^H^H^H^H^H^H^H^H^H^^[24;1HH^H^H^H^H^H^H^H^H^H^M^M[0m> data = cypher(neo4j, query)[34m^M^M[0m> "        [25;1H [17C [34m^M^M[0m> "[34m^H[0morder by weight desc[34m^M^M[0m> RETURN p1.idd[26;1H, p2.id, COUNT(*) AS weight[34m^M^M[0m> order by weight desc[12C  [27;1H      [34m^H^H^H^H^H^H^H^H^H^H^H^H^H^H^H^H^H^H^H^M^M[0m> "[14C  [28;1H    [34m^M^M[0m> "[34m^H[0mdata = cypher(neo4j, query)[34m^M^M[0m> bet = betweenness(g))[29;1H       [34m^H^H^H^H^H^H^H^M^M[0m> g = graph.data.frame(data, directed = FF[30;1H)[34m^M^M[0m> Sys.time[31C [34m^M^M[0m> Sys.time()[34m^M^^[31;1HM[0m> bet = betweenness(g)[34m^M^M[0m> Sys.time()[9C [34m^H^H^H^H^H^H^H^H^^[32;1HH^H^M^M[0m> length(deg)[34m^H[0mt)[34m^H^H^H^H^H[0mbet) [34m^H^M^M[0m> rm(degt)   [34m^H^H^H^MM[33;1H^M[0m> gc()    [34m^H^H^H^H^M^M[0m> sort_deg=sort(deg[34m^G^G^G^G^G^G^G^G^G^G^G^^[34;1HG^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^^[35;1HG^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^H[0m [34m^H^H[0m [34m^H^^[36;1HH[0m [34m^H^H[0m [34m^H^H[0m [34m^H^H[0m [34m^H^H[0m [34m^H^H[0m [34m^H^H[0m [34m^H^H[0m [34m^H^H[0m [34m^H^H[0m [34m^H^H[0m [34m^H[0m([34m^H[0m [34m^H^H[0m [34m^H^^[37;1HH[0m [34m^H^H[0m [34m^H^H[0m [34m^H[0msort_deg=sort(deg,decreasing=TRUE)[34m^M^M[0m
+> head(sort_deg)[34m^M^M[0m
+ 327698  184197  199910  192305 1428399  148143 [34m^M^M[0m
+  10237    4324    3118    2612    2574    2395 [34m^M^M[0m
+> save(sort_deg,file=[34m^M^M[0m
++ "degree_user_sort.csv)[34m^H[0m [34m^H[0m")[34m^M^M[0m
+> write.csv(d[34m^H[0m [34m^H[0msort[34m^G[0m_deg,"degree_user_sort.csv",row.names=FALSS[44;1HE)[34m^M^M[0m
+> write.csv(sort_deg,"degree_user_sort.csv",row.names=FALSE)[34m^H^H[0m)  [46;1H[34m^H^H^H[0m) [34m^H^H^H[0m) [34m^H^H^H[0m) [34m^H^H^H[0m) [34m^H^H^H[0m) [34m^H^H^H[0m) [34m^H^H^H[0m) [34m^H^H^H[0m) [34m^HH[47;1H^H^H[0m) [34m^H^H^H[0m) [34m^H^H^H[0m) [34m^H^H^H[0m) [34m^H^H^H[0m) [34m^H^H^H[0m) [34m^H^H^H[0m) [34m^H^H^M^M[0m
+> [34m^G^G^G[0mwrite.csv(sort_deg,"degree_user_sort.csv")[34m^H[0m,row.names=FALL[49;1HSE)[34m^M^M[0m> "degree_user_sort.csv")[33C  [50;1H [34m^M^M[0m> "degree_user_sort.csv")[34m^M^M[0m> save(sort_deg,file=    [34m^H^H^H^^[51;1HH^M^M[0m> head(sort_deg)     [34m^H^H^H^H^H^M^M[0m> save(sort_deg,file=[34m^M^M[0m>>[52;1H "degree_user_sort.csv")[34m^M^M[0m> write.csv(sort_deg,"degree_user_sortt[53;1H.csv",row.names=FALSE)[34m^H^H^H^H^H^H^H^H^H^H^H^H^H^H^H^H^H[0m)[8C  [54;1H       [34m^H^H^H^H^H^H^H^H^H^H^H^H^H^H^H^H^M^M[0m>[21C  [55;1H [19C [34m^M^M[0m> write.csv(sort_deg,"degree_user_sort.css[56;1Hv")[34m^H[0m,row.names=FALSE)[34m^M^M[0m> "degree_user_sort.csv")[57;49H175,1[9CBot[48;1H[34h[?25h[?25l[23m[24m[0m[H[J[1;1HScript started on Sun 13 Mar 2016 11:58:04 AM UTC
+Fony@gke-cluster-r-5ad41d3a-node-yekg:~$ xr[34m^M
+^M^M[0m
+R version 3.2.3 (2015-12-10) -- "Wooden Christmas-Tree"[34m^M^M[0m
+Copyright (C) 2015 The R Foundation for Statistical Computing[34m^M^M[0m
+Platform: x86_64-pc-linux-gnu (64-bit)[34m^M^M
+^M^M[0m
+R is free software and comes with ABSOLUTELY NO WARRANTY.[34m^M^M[0m
+You are welcome to redistribute it under certain conditions.[34m^M^M[0m
+Type 'license()' or 'licence()' for distribution details.[34m^M^M
+^M^M[0m
+  Natural language support but running in an English locale[34m^M^M
+^M^M[0m
+R is a collaborative project with many contributors.[34m^M^M[0m
+Type 'contributors()' for more information and[34m^M^M[0m
+'citation()' on how to cite R or R packages in publications.[34m^M^M
+^M^M[0m
+Type 'demo()' for some demos, 'help()' for on-line help, or[34m^M^M[0m
+'help.start()' for an HTML browser interface to help.[34m^M^M[0m
+Type 'q()' to quit R.[34m^M^M
+^M^M[0m
+> ibrary(RNeo4j)[34m^M^M[0m
+Error: could not find function "ibrary"[34m^M^M[0m
+> library(igraph)[34m^M^M
+^M^M[0m
+Attaching package: ‘igraph’[34m^M^M
+^M^M[0m
+The following objects are masked from ‘package:stats’:[34m^M^M
+^M^M[0m
+    decompose, spectrum[34m^M^M
+^M^M[0m
+The following object is masked from ‘package:base’:[34m^M^M
+^M^M[0m
+    union[34m^M^M
+^M^M[0m
+> library(igraph)[34m^M^M[0m
+> library(jsonlite)[34m^M^M[0m
+> setwd('~/rneo4j-centrality')[34m^M^M[0m
+> getwd()[34m^M^M[0m
+[1] "/root/rneo4j-centrality"[34m^M^M[0m
+> neo4j = startGraph("http://104.197.210.78:7474/db/data/")[34m^M^M[0m
+Error: could not find function "startGraph"[34m^M^M[0m
+> neo4j = startGraph("http://104.197.210.78:7474/db/data/")[34m^M^M[0m> gg[44;1Hetwd()[49C [34m^M^M[0m> getww[45;1Hd()[34m^M^M[0m> setwd('~/rneo4j-centrality')[34m^M^M[0m> library(jsonlite)       [46;1H     [34m^H^H^H^H^H^H^H^H^H^H^H^H^H^H^H^H^H^H^H^H[0migraph)  [34m^H^H^M^M[0m> ibb[47;1Hrary(RNeo4j) [34m^H^M^M[0m
+Error: could not find function "ibrary"[34m^M^M[0m
+> ibrary(RNeo4j)[34m^H^H^H^H^H^H^H^H^H^H^H^H^H^H^G^G^G^G[0mlibrary(RNeo4jj[50;1H)[34m^M^M[0m> l[34m^M^M[0m
+> library(RNeo4j)[34m^M^M[0m> ibrary(RNeo4j) [34m^H^M^M[0m> neo4j = startGraph(""[52;1Hhttp://104.197.210.78:7474/db/data/")[34m^M^M[0m
+> Sys.time()[34m^M^M[0m
+[1] "2016-03-13 11:59:28 UTC"[34m^M^M[0m
+> queryu =  "[34m^M^M[0m
++ MATCH (p1:User)-[:POSTED]->(:Topic)<-[r:REPLIED]-(p2:User)[34m^M^M[0m[57;49H1,1[11CTop[1;1H[34h[?25h[?25l[57;49H2[2;1H[34h[?25h[?25l[57;49H3[3;1H[34h[?25h[?25l[57;49H4[4;1H[34h[?25h[?25l[57;49H5[5;1H[34h[?25h[?25l[57;49H6[6;1H[34h[?25h[?25l[57;49H7[7;1H[34h[?25h[?25l[57;49H8[8;1H[34h[?25h[?25l[57;49H9[9;1H[34h[?25h[?25l[57;49H10,1[10;1H[34h[?25h[?25l[23m[24m[0m[H[J[1;1H[34m^M^M[0m
+^[a^[d[34m^H[0m [34m^H^H[0m [34m^H^H[0m [34m^H^H[0m [34m^H^H[0m [34m^H^H[0m [34m^H^M^M
+^M^M
+^M^M[0m
+^C[34m^M^M[0m
+> Syste[34m^H[0m [34m^H^H[0m [34m^H[0m.time()[34m^M^M[0m
+[1] "2016-03-15 14:59:27 UTC"[34m^M^M[0m
+> length(deg_[34m^H[0m [34m^H[0m)[34m^M^M[0m
+[1] 172258[34m^M^M[0m
+> length(degt)[34m^M^M[0m
+[1] 1114516[34m^M^M[0m
+> length(bet)[34m^M^M[0m
+Error: object 'bet' not found[34m^M^M[0m
+> rm(degt)[34m^M^M[0m
+> เแ๖๗[34m^H[0m [34m^H^H[0m [34m^H^H[0m [34m^H^H[0m [34m^H^G^G^G^G^G^G^G[0mgc()[34m^M^M[0m[16;11H used  (Mb) gc trigger  (Mb) max used   (Mb)[34m^M^M[0m
+Ncells  1607861  85.9   15628672 834.7 24419802 1304.2[34m^M^M[0m
+Vcells 39801313 303.7   93893969 716.4 93893968  716.4[34m^M^M[0m
+> soss[34m^H[0m [34m^H^H[0m [34m^H[0mrt_deg=sort(deg[34m^M^M[0m> gc()[12C [34m^M^M[0m> gc()[34m^MM[20;1H^M[0m> rm(degt)[34m^M^M[0m> length(bet)[34m^H^H^H^H[0mdegt)[34m^H^H[0m) [34m^H^M^M[0m> Sys.time())[21;1H [34m^H^M^M[0m> bet = betweenness(g)[34m^M^M[0m> Sys.time()[9C [34m^H^H^H^H^H^^[22;1HH^H^H^H^H^H^H[0m  [34m^H^H^M^M[0m> g = graph.data.frame(data, directed = F)[34m^^[23;1HM^M[0m> bet = betweenness(g)[19C [34m^H^H^H^H^H^H^H^H^H^H^^[24;1HH^H^H^H^H^H^H^H^H^H^M^M[0m> data = cypher(neo4j, query)[34m^M^M[0m> "        [25;1H [17C [34m^M^M[0m> "[34m^H[0morder by weight desc[34m^M^M[0m> RETURN p1.idd[26;1H, p2.id, COUNT(*) AS weight[34m^M^M[0m> order by weight desc[12C  [27;1H      [34m^H^H^H^H^H^H^H^H^H^H^H^H^H^H^H^H^H^H^H^M^M[0m> "[14C  [28;1H    [34m^M^M[0m> "[34m^H[0mdata = cypher(neo4j, query)[34m^M^M[0m> bet = betweenness(g))[29;1H       [34m^H^H^H^H^H^H^H^M^M[0m> g = graph.data.frame(data, directed = FF[30;1H)[34m^M^M[0m> Sys.time[31C [34m^M^M[0m> Sys.time()[34m^M^^[31;1HM[0m> bet = betweenness(g)[34m^M^M[0m> Sys.time()[9C [34m^H^H^H^H^H^H^H^H^^[32;1HH^H^M^M[0m> length(deg)[34m^H[0mt)[34m^H^H^H^H^H[0mbet) [34m^H^M^M[0m> rm(degt)   [34m^H^H^H^MM[33;1H^M[0m> gc()    [34m^H^H^H^H^M^M[0m> sort_deg=sort(deg[34m^G^G^G^G^G^G^G^G^G^G^G^^[34;1HG^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^^[35;1HG^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^G^H[0m [34m^H^H[0m [34m^H^^[36;1HH[0m [34m^H^H[0m [34m^H^H[0m [34m^H^H[0m [34m^H^H[0m [34m^H^H[0m [34m^H^H[0m [34m^H^H[0m [34m^H^H[0m [34m^H^H[0m [34m^H^H[0m [34m^H[0m([34m^H[0m [34m^H^H[0m [34m^H^^[37;1HH[0m [34m^H^H[0m [34m^H^H[0m [34m^H[0msort_deg=sort(deg,decreasing=TRUE)[34m^M^M[0m
+> head(sort_deg)[34m^M^M[0m
+ 327698  184197  199910  192305 1428399  148143 [34m^M^M[0m
+  10237    4324    3118    2612    2574    2395 [34m^M^M[0m
+> save(sort_deg,file=[34m^M^M[0m
++ "degree_user_sort.csv)[34m^H[0m [34m^H[0m")[34m^M^M[0m
+> write.csv(d[34m^H[0m [34m^H[0msort[34m^G[0m_deg,"degree_user_sort.csv",row.names=FALSS[44;1HE)[34m^M^M[0m
+> write.csv(sort_deg,"degree_user_sort.csv",row.names=FALSE)[34m^H^H[0m)  [46;1H[34m^H^H^H[0m) [34m^H^H^H[0m) [34m^H^H^H[0m) [34m^H^H^H[0m) [34m^H^H^H[0m) [34m^H^H^H[0m) [34m^H^H^H[0m) [34m^H^H^H[0m) [34m^HH[47;1H^H^H[0m) [34m^H^H^H[0m) [34m^H^H^H[0m) [34m^H^H^H[0m) [34m^H^H^H[0m) [34m^H^H^H[0m) [34m^H^H^H[0m) [34m^H^H^M^M[0m
+> [34m^G^G^G[0mwrite.csv(sort_deg,"degree_user_sort.csv")[34m^H[0m,row.names=FALL[49;1HSE)[34m^M^M[0m> "degree_user_sort.csv")[33C  [50;1H [34m^M^M[0m> "degree_user_sort.csv")[34m^M^M[0m> save(sort_deg,file=    [34m^H^H^H^^[51;1HH^M^M[0m> head(sort_deg)     [34m^H^H^H^H^H^M^M[0m> save(sort_deg,file=[34m^M^M[0m>>[52;1H "degree_user_sort.csv")[34m^M^M[0m> write.csv(sort_deg,"degree_user_sortt[53;1H.csv",row.names=FALSE)[34m^H^H^H^H^H^H^H^H^H^H^H^H^H^H^H^H^H[0m)[8C  [54;1H       [34m^H^H^H^H^H^H^H^H^H^H^H^H^H^H^H^H^M^M[0m>[21C  [55;1H [19C [34m^M^M[0m> write.csv(sort_deg,"degree_user_sort.css[56;1Hv")[34m^H[0m,row.names=FALSE)[34m^M^M[0m> "degree_user_sort.csv")[57;49H175,1[9CBot[48;1H[34h[?25h[?25l[57;51H4[45;1H[34h[?25h[?25l[57;51H5[48;1H[34h[?25h[?25l[57;51H4[45;1H[34h[?25h[?25l[57;51H5[48;1H[34h[?25h[?25l[57;51H4[45;1H[34h[?25h[?25l[57;51H5[48;1H[34h[?25h[?25l[57;51H4[45;1H[34h[?25h[?25l[57;51H5[48;1H[34h[?25h[?25l[57;51H4[45;1H[34h[?25h[?25l[57;51H5[48;1H[34h[?25h[?25l[57;51H4[45;1H[34h[?25h[?25l[57;51H5[48;1H[34h[?25h[?25l[57;51H4[45;1H[34h[?25h[?25l[57;51H5[48;1H[34h[?25h[?25l[57;51H4[45;1H[34h[?25h[?25l[57;51H5[48;1H[34h[?25h[?25l[57;51H4[45;1H[34h[?25h[?25l[57;51H5[48;1H[34h[?25h[?25l[57;51H4[45;1H[34h[?25h[?25l[57;51H5[48;1H[34h[?25h[?25l[57;51H4[45;1H[34h[?25h[?25l[57;51H5[48;1H[34h[?25h[?25l[57;51H4[45;1H[34h[?25h[?25l[57;51H5[48;1H[34h[?25h[?25l[57;51H4[45;1H[34h[?25h[?25l[57;49H[K[57;1H:[34h[?25hq[?25l[34h[?25h[?25l[57;1H[K[57;1H[?1l>[34h[?25h[?1049lFony@gke-cluster-r-5ad41d3a-node-yekg:~$ mv typescript typescript  M[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+[KM[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[Kpt_ fail[K[K[K[KM[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+[KM[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cd egree
+Fony@gke-cluster-r-5ad41d3a-node-yekg:~$ ls
+aptlist  [0m[01;34mrneo4j-centrality[0m  typescriptdegree
+Fony@gke-cluster-r-5ad41d3a-node-yekg:~$ ty[K[Ksc[K[Kexit
+
+Script done on Thu 17 Mar 2016 07:59:22 PM UTC
