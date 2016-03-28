@@ -3,7 +3,6 @@ library(igraph)
 library(igraph)
 library(jsonlite)
 
-setwd('~/rneo4j-centrality')
 getwd()
 neo4j = startGraph("http://104.197.210.78:7474/db/data/")
 
