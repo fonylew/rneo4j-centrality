@@ -7,6 +7,17 @@ install.packages("igraph")
 install.packages("jsonlite")
 install.packages("devtools")
 ```
+# REST API
+can use via port 8000
+```
+GET ?room
+
+/deg      sort by degree centrality.
+/bet      sort by betweenness centrality.
+/clo      sort by closeness centrality.
+/droom    sort by number of topics that posted in that room.
+/rep      sort by number of replies of owned post in that room.
+```
 
 # Docker Machine
 `git clone https://github.com/fonylew/rneo4j-centrality.git`
