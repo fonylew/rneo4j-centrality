@@ -7,13 +7,13 @@ neo4j = startGraph("http://104.197.210.78:7474/db/data/")
 
 # POPULAR TOPIC
 query_topic =
-  "
+"
 MATCH (t:Topic)
 WITH t.degree as deg_topic,t.id as tid,t.emo as temo,t.timestamp as time,t.room as troom,t.like as tlike
 RETURN tid,deg_topic,tlike,temo,time,troom
 order by deg_topic desc 
 limit 30
-")
+"
 popular_topic = cypher(neo4j, query_topic)
 ##########
 
