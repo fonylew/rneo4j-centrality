@@ -19,7 +19,7 @@ cen <- function(room){
 }
 
 #* @get /deg
-cen <- function(room){
+deg <- function(room){
   query_cen = paste(
     "
   MATCH (n:User)-[p:POSTED]->(t:Topic)-[c:CLASSED]->(g:Room {name: ",room,"})
@@ -32,7 +32,7 @@ cen <- function(room){
 }
 
 #* @get /bet
-cen <- function(room){
+bet <- function(room){
   query_cen = paste(
     "
   MATCH (n:User)-[p:POSTED]->(t:Topic)-[c:CLASSED]->(g:Room {name: ",room,"})
@@ -45,7 +45,7 @@ cen <- function(room){
 }
 
 #* @get /clo
-cen <- function(room){
+clo <- function(room){
   query_cen = paste(
     "
   MATCH (n:User)-[p:POSTED]->(t:Topic)-[c:CLASSED]->(g:Room {name: ",room,"})
@@ -58,7 +58,7 @@ cen <- function(room){
 }
 
 #* @get /droom
-cen <- function(room){
+droom <- function(room){
   query_cen = paste(
     "
     MATCH (n:User)-[p:POSTED]->(t:Topic)-[c:CLASSED]->(g:Room {name: ",room,"})
@@ -71,7 +71,7 @@ cen <- function(room){
 }
 
 #* @get /rep
-cen <- function(room){
+rep <- function(room){
   query_cen = paste(
     "
   MATCH (n:User)-[p:POSTED]->(t:Topic)-[c:CLASSED]->(g:Room {name: ",room,"})
@@ -83,15 +83,9 @@ cen <- function(room){
   data = cypher(neo4j, query_cen)
 }
 
-#* @get /test
-test <- function(a){
-  query_test =
-    "
-    MATCH (n:User)
-    return n
-    limit 10;
-    "
-  data_test = cypher(neo4j, query_test)
+#* @get /top
+top <- function(){
+  popular_topic
 }
 
 #* @get /stupid

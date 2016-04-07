@@ -72,3 +72,25 @@ order by count_tag desc
 ")
 data_tag = cypher(neo4j, query_tag)
 View(data_tag)
+
+##between
+#user="327698"          #change id here
+query_bet = paste(
+  "
+MATCH (n:User)
+RETURN n.id,n.degree,n.closeness_centrality,n.betweenness_centrality
+order by n.betweenness_centrality desc;
+")
+data_bet = cypher(neo4j, query_bet)
+View(data_bet)
+
+# POPULAR TOPIC
+query_topic =
+  "
+  MATCH (t:Topic)
+  WITH t.degree as deg_topic,t.id as tid,t.emo as temo,t.timestamp as time,t.room as troom,t.like as tlike
+  RETURN tid,deg_topic,tlike,temo,time,troom
+  order by deg_topic desc 
+  limit 30
+  ")
+popular_topic = cypher(neo4j, query_topic)
