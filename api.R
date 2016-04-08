@@ -76,7 +76,7 @@ droom <- function(room){
     MATCH (n:User)-[p:POSTED]->(t:Topic)-[c:CLASSED]->(g:Room {name: ",room,"})
     WITH n.id as nid, g.name as room, count(*) as sum , SUM(t.degree)as deg_room, n.degree as ndegree , n.betweenness_centrality as nbetween, n.closeness_centrality as ncloseness
     RETURN nid,room,deg_room,sum ,ndegree,nbetween,ncloseness
-    order by deg_room desc 
+    order by sum desc 
     limit 10
     ")
   data = cypher(neo4j, query_cen)
@@ -89,9 +89,61 @@ rep <- function(room){
   MATCH (n:User)-[p:POSTED]->(t:Topic)-[c:CLASSED]->(g:Room {name: ",room,"})
   WITH n.id as nid, g.name as room, count(*) as sum , SUM(t.degree)as deg_room, n.degree as ndegree , n.betweenness_centrality as nbetween, n.closeness_centrality as ncloseness
   RETURN nid,room,deg_room,sum ,ndegree,nbetween,ncloseness
-  order by sum desc 
+  order by deg_room desc 
   limit 10
   ")
+  data = cypher(neo4j, query_cen)
+}
+
+#* @get /all_deg
+deg <- function(){
+  query_cen =
+    "
+  MATCH (n:User)-[p:POSTED]->(t:Topic)
+  WITH n.id as nid, count(*) as sum , n.degree as ndegree , n.betweenness_centrality as nbetween, n.closeness_centrality as ncloseness
+  RETURN nid,sum ,ndegree,nbetween,ncloseness
+    order by ndegree desc 
+    limit 10
+    "
+  data = cypher(neo4j, query_cen)
+}
+
+#* @get /all_sum
+sum <- function(){
+  query_cen = 
+    "
+  MATCH (n:User)-[p:POSTED]->(t:Topic)
+  WITH n.id as nid, count(*) as sum , n.degree as ndegree , n.betweenness_centrality as nbetween, n.closeness_centrality as ncloseness
+  RETURN nid,sum ,ndegree,nbetween,ncloseness
+  order by sum desc 
+  limit 10
+  "
+  data = cypher(neo4j, query_cen)
+}
+
+#* @get /all_bet
+bet <- function(){
+  query_cen = 
+    "
+  MATCH (n:User)-[p:POSTED]->(t:Topic)
+  WITH n.id as nid, count(*) as sum , n.degree as ndegree , n.betweenness_centrality as nbetween, n.closeness_centrality as ncloseness
+  RETURN nid,sum ,ndegree,nbetween,ncloseness
+  order by nbetween desc 
+  limit 10
+  "
+  data = cypher(neo4j, query_cen)
+}
+
+#* @get /all_clo
+clo <- function(){
+  query_cen = 
+    "
+  MATCH (n:User)-[p:POSTED]->(t:Topic)
+  WITH n.id as nid, count(*) as sum , n.degree as ndegree , n.betweenness_centrality as nbetween, n.closeness_centrality as ncloseness
+  RETURN nid,sum ,ndegree,nbetween,ncloseness
+  order by ncloseness desc 
+  limit 10
+  "
   data = cypher(neo4j, query_cen)
 }
 

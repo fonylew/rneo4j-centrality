@@ -60,7 +60,7 @@ order by deg_room desc
 data_isolate = cypher(neo4j, query_isolate)
 View(data_isolate)
 
-
+###################################
 ##TAG
 user="327698"          #change id here
 query_tag = paste(
@@ -73,17 +73,30 @@ order by count_tag desc
 data_tag = cypher(neo4j, query_tag)
 View(data_tag)
 
+###################################
 ##between
-#user="327698"          #change id here
-query_bet = paste(
+#user="184197"          #change id here
+query_temp = paste(
   "
 MATCH (n:User)
-RETURN n.id,n.degree,n.closeness_centrality,n.betweenness_centrality
-order by n.betweenness_centrality desc;
-")
-data_bet = cypher(neo4j, query_bet)
-View(data_bet)
+RETURN n.id,n.degree,n.closeness_centrality,n.betweenness_centrality;
 
+")
+data_temp = cypher(neo4j, query_temp)
+View(data_temp)
+
+###################################
+# PER USER
+user="184197"          #change id here
+query_temp = paste(
+  "
+MATCH (n:User{id:",user,"})
+RETURN n.id,n.degree,n.closeness_centrality,n.betweenness_centrality;
+")
+data_temp = cypher(neo4j, query_temp)
+View(data_temp)
+
+###################################
 # POPULAR TOPIC
 query_topic =
   "
